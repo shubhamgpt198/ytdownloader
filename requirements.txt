@@ -1,0 +1,3 @@
+django
+pafy==0.5.4
+youtube-dl==2018.11.7

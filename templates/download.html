@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Youtube Downloader</title>
+    <style>
+        .thumbnail{
+            width:150px;
+            height:400px;
+        }
+        .time{
+          padding: 10px 10px 10px 10px;
+          background-color: #2c3e50;
+          color:#ecf0f1;
+        }
+        .title{
+          padding: 10px 10px 10px 10px;
+          background-color: #16a085;
+          color:#ecf0f1;
+        }
+        .filesize{
+          padding: 10px 10px 10px 10px;
+          background-color: #c0392b;
+          color:#ecf0f1;
+
+        }
+    </style>
+    
+</head>
+<body>
+
+ <div class="row center">
+        <div class="col s12 m6 offset-m3">
+          <div class="card">
+            <div class="card-image">
+              <img src="{{ thumbnail }}" class="thumbnail"> 
+            </div>
+            <div class="card-content">
+              <p class= "title"> {{title}} </p> </br>
+              <p class="time">Duration:  {{hour}} : {{min}} : {{sec}} </p>
+            </div>
+
+            {% for key,value in formats.items %} 
+            <div class="card-action">
+                <a class="waves-effect waves-light btn" href="{{ value.0 }}" download ><i class="material-icons left" >arrow_downward</i>Download {{ key }} </a>
+                <p class ="filesize"> Size: {{ value.1 }} MB </p>
+            </div>
+             
+            
+            
+            {% endfor %}
+          
+        </div>
+      </div> 
+              
+    
+      
+</body>
+</html>

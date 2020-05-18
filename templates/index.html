@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Youtube Downloader</title>
+    <style>
+
+        body,div,h1{ margin-top: 0px;
+            padding-top: 0px;
+            text-align: center;
+            color: #fff;
+        }
+        
+       .hero{
+           width:auto;
+           height:300px;
+           background-color:#00695c;
+           border-bottom-left-radius: 20%;
+           border-bottom-right-radius: 20%;
+       }
+       .jclass{
+           padding-top: 8% ;
+       }
+       .inp{
+           width: 50%;
+       }
+       .error
+       {  
+           visibility: hidden;
+           color:#fff;
+            padding: 20px;
+            background-color: #f44336; 
+            margin-bottom: 15px;
+            width:30%;
+       }
+       
+    </style>
+</head>
+<body>
+    <div class="hero"> 
+        <h1 class="jclass"> Welcome To Youtube Downloader </h1>
+    </div>
+    </br> </br> </br>
+    
+
+    <form action="/download" method="post" onsubmit="return isUrl(document.getElementById('url').value);">
+        {% csrf_token %}
+    <div class="section">
+    <div class="row">
+    <div class="input-field col offset-s4 s4">
+
+        <input id="url" type="text" name="textfield" >
+        <label for="Paste Youtube Link">Paste youtube link </label>
+        <button type="submit" class="btn waves-effect waves-light" value="Download" > Download <i class="material-icons right">send</i>
+
+    </div>
+    </div>
+    </div>
+    </form>
+
+    </br> </br> 
+     <center> <h6 id="kat" class="error">  </h6> </center>
+      
+</body>
+</html>
+<script>
+  function isUrl(string) {
+  var res = string.match(/^(?:https?:\/\/)?(?:m\.|www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/);
+  if(res==null)
+  {
+  document.getElementById("kat").style.visibility = "visible";
+  document.getElementById("kat").innerHTML = 'Please Enter Valid Url';
+  return false;
+  }
+  return true;
+  
+}
+  
+</script>
